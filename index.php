@@ -1,31 +1,7 @@
 <?php 
    include("config.php");
-   session_start();
-?>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Login Page</title>
-    <base href="/">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
-<div class="login-box">
-    <form method="POST">
-        <label id="username__label">USERNAME</label>
-        <input id="username__box" type="text" autocomplete="off" name="username">
-        <br/>
-        <label id="password__label">PASSWORD</label>
-        <input id="password__box" type="password" autocomplete="off" name="password">
-        <br/>
-        <input type="submit" class="button" name="submit" value="submit" />
-    </form>
-</div>
-<script src= scripts.js></script>
-</body>
-<?php 
+   session_start(); 
+   $error ="";
 
     if(isset($_POST['submit'])){
         $username=$_POST['username'];
@@ -40,7 +16,7 @@
         $count = mysqli_num_rows($result);
 
         if($count == 1){
-            $_SESSION['login_user'] = '$username';
+            $_SESSION['login_user'] = $username;
             header("location: ../dashboard.php");
         }
         else {
@@ -62,5 +38,30 @@
     mysqli_close($conn);
     }*/
 ?>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="login-box">
+    <form method="POST">
+        <label id="username__label">USERNAME</label>
+        <input id="username__box" type="text" autocomplete="off" name="username">
+        <br/>
+        <label id="password__label">PASSWORD</label>
+        <input id="password__box" type="password" autocomplete="off" name="password">
+        <br/>
+        <input type="submit" class="button" name="submit" value="submit" />
+    </form>
+    <?php echo $error?>
+</div>
+<script src= scripts.js></script>
+</body>
+
 
 </html>
