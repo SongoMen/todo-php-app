@@ -9,15 +9,38 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body>
+    <div id = "black-bg" class="black-bg" hidden>
+    </div>   
+    <div class="context" hidden>
+        <div class="context_item"> 
+            <div class="inner_item">
+            Create new task
+            </div> 
+        </div>
+        <div class="context_item"> 
+            <div class="inner_item">
+            Cut
+            </div> 
+        </div>
+        <div class="context_item"> 
+            <div class="inner_item">
+            Paste
+            </div> 
+        </div>
+        <div class="context_hr"></div>
+        <div class="context_item"> 
+            <div class="inner_item last">
+            Log Out
+            </div> 
+        </div>
+    </div>
     <div class="left-bar">
 
     </div>
 
     <div class="dashboard" id="dashboard">
-
         <p class="bg-name"><?php echo $user_check; ?></p>
-
-        <svg id="task-add" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.42 14.42">
+        <svg id="task-add" class="task-add" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.42 14.42">
             <defs>
                 <style>.cls-1{fill:#fff;}.cls-2{width:100px; height:100px; fill:#f44242;}</style>
             </defs>
@@ -36,6 +59,23 @@
             </div>
         </div>
         <h1 class="dashboard__welcome">Welcome <p><?php echo $user_check; ?></p> </h1>
+        <div class="dashboard__taskadd" id="dashboard__taskadd" hidden>
+            <div class="taskadd__name">
+                Name
+            </div>
+
+            <footer>
+                <div class="taskadd__back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="transform:rotate(180deg)" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" fill="#bdc3c7" /></svg>
+                    <p>Go Back</p>
+                </div>
+                <div class="taskadd__next">
+                    <p>Next</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
+                    
+                </div>
+            </footer>   
+        </div>
     </div>
     <script src="dashboard.js"></script>
 </body>

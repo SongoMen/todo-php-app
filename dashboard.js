@@ -17,6 +17,47 @@ $(function() {
         },
         stop: function(event, ui) {
             $(this).animate({ 'left': (ui.position.left).roundTo(slideWidth) })
-        }
+        },
+        cursor: 'pointer'
     });
 });
+
+
+
+if (document.addEventListener) {
+    document.addEventListener('contextmenu', function(e) {
+        $(".context")
+            .show()
+            .css({
+                top: event.pageY,
+                left: event.pageX
+            });
+        e.preventDefault();
+    }, false);
+} else {
+    document.attachEvent('oncontextmenu', function() {
+        $(".context")
+            .show()
+            .css({
+                top: event.pageY,
+                left: event.pageX
+            });
+        window.event.returnValue = false;
+    });
+}
+
+$(document).click(function() {
+    if ($(".context").is(":hover") == false) {
+        $(".context").fadeOut("fast");
+    };
+});
+
+$("#task-add").click(function() {
+    if ($('#dashboard__taskadd').css('display') === "none") {
+        $("#dashboard__taskadd").css("display", "flex")
+        $("#black-bg").css("display", "block")
+    } else {
+        $("#dashboard__taskadd").css("display", "none")
+        $("#black-bg").css("display", "block")
+    }
+})
