@@ -1,5 +1,5 @@
 <?php 
-   include("config.php");
+   include("php files/config.php");
    session_start(); 
    $error ="";
 
@@ -17,7 +17,7 @@
 
         if($count == 1){
             $_SESSION['login_user'] = $username;
-            header("location: ../dashboard.php");
+            header("location: ../php files/dashboard.php");
         }
         else {
             $error = "Your Login Name or Password is invalid";
@@ -43,7 +43,7 @@
     <meta charset="utf-8">
     <title>Login Page</title>
     <base href="/">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css files/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -60,7 +60,7 @@
     </form>
     <?php echo $error?>
 </div>
-<script src= scripts.js></script>
+<script src="js files/scripts.js"></script>
 </body>
 
 

@@ -6,6 +6,18 @@ body {
     overflow: hidden;
 }
 
+/*################################ KEYFRAMES #########################*/
+
+@keyframes taskadd{
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: .8;
+    }
+}
+
+
 .black-bg {
     position: absolute;
     width: 100%;
@@ -13,6 +25,7 @@ body {
     background-color: #141414;
     opacity: 0.8;
     z-index: 15;
+    animation: taskadd 1s;
 }
 
 .context {
@@ -160,6 +173,7 @@ body {
     z-index: 20;
     min-width: 800px;
     padding: 20px;
+    animation: taskadd 1s;
 }
 
 .dashboard__taskadd footer {

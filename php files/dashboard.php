@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css files/dashboard.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
@@ -77,6 +77,6 @@
             </footer>   
         </div>
     </div>
-    <script src="dashboard.js"></script>
+    <script src="../js files/dashboard.js"></script>
 </body>
 </html>
