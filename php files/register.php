@@ -1,8 +1,8 @@
 <?php 
-   include("config.php");
-   session_start(); 
-   $error ="";
-	
+    include("config.php");
+    session_start(); 
+    $error ="";
+
 	if(isset($_POST['submit'])){
         $username=$_POST['username'];
         $password=$_POST['password'];
@@ -13,11 +13,11 @@
 				$error="Username already exist";
 			}
 			else{
-				$sql = "INSERT INTO users (username, password)
-				VALUES ('$username', '$password')";
+				$sql = "CREATE TABLE `".$username."`(Id_task INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(Id_task), Task VARCHAR(40),Task_description VARCHAR (255), Task_date VARCHAR(10));";
+                $sql .="INSERT INTO users (username, password) VALUES ('$username', '$password')";
 
-				if (mysqli_query($conn, $sql)) {
-					echo "Register successful";
+				if (mysqli_multi_query($conn, $sql)) {
+					$error= "Register successful";
 				} else {
 					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 				}
@@ -45,7 +45,7 @@
         <input type="submit" class="button" name="submit" value="Sign Up" />
 		<footer style="top:60px; display:flex;flex-direction:column;justify-content:center;align-items:center;">
 			<?php echo $error?>
-			<p style="color:#a7adb1">Already have an account ? <a style="font-weight:700;color:#f44242; text-decoration:none;" href="../index.php"> Sign In</a></p>
+			<p style="color:#a7adb1">Already have an account ? <a class="footer__a" style="font-weight:700;color:#f44242; text-decoration:none;" href="../index.php"> Sign In</a></p>
 		</footer>
     </form>
 </div>

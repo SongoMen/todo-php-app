@@ -24,8 +24,8 @@ body {
     height: 100%;
     background-color: #141414;
     opacity: 0.8;
-    z-index: 15;
-    animation: taskadd 1s;
+    z-index: 155;
+    animation: taskadd .5s;
 }
 
 .context {
@@ -89,7 +89,7 @@ body {
     text-transform: uppercase;
     font-weight: 400!important;
     flex-flow: column wrap;
-    z-index: 2;
+    z-index: 65;
 }
 
 .dashboard {
@@ -105,7 +105,7 @@ body {
     position: absolute;
     color: #a7adb1;
     text-transform: uppercase;
-    font-size: 120px;
+    font-size: 250px;
     font-weight: 800;
     letter-spacing: -10px;
     opacity: 0.2;
@@ -134,6 +134,8 @@ body {
     margin: 0;
 }
 
+/* TIMELINE */
+
 .dashboard__timeline {
     display: flex;
     align-items: center;
@@ -145,17 +147,147 @@ body {
 .timeline-1,
 .timeline-2,
 .timeline-3 {
-    min-width: 700px;
-    height: 400px;
+    min-width: 650px;
+    height: 40vh;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0px 0px 51px 0px rgba(88, 88, 88, 0.327);
+    box-shadow: 0px 0px 31px 0px rgba(0, 0, 0, 0.253);
     margin-right: 200px;
+    padding:50px;
 }
 
 .timeline-1 {
     margin-left: 700px
 }
+
+.timeline-1 h2{
+    position: absolute;
+    opacity: .35;
+    color:#bdc3c7;
+    font-size:150px;
+    top:-120px;
+    z-index: 0;
+}
+
+.timeline-1 h1, .timeline-1 table{
+    z-index:12;
+}
+
+.timeline-1 h1{
+    position: relative;
+    color:#f44242;
+}
+
+label {
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+  }
+  label span {
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    transform-origin: center;
+    border: 2px solid #2ecc71;
+    border-radius: 50%;
+    vertical-align: -6px;
+    margin-right: 10px;
+    transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+  }
+  label span:before {
+    content: '';
+    width: 0px;
+    height: 2px;
+    border-radius: 2px;
+    background: #2ecc71;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 13px;
+    left: 9px;
+    transition: width 50ms ease 50ms;
+    transform-origin: 0% 0%;
+  }
+  label span:after {
+    content: '';
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: #2ecc71;
+    position: absolute;
+    transform: rotate(305deg);
+    top: 16px;
+    left: 10px;
+    transition: width 50ms ease;
+    transform-origin: 0% 0%;
+  }
+  label:hover span:before {
+    width: 5px;
+    transition: width 100ms ease;
+  }
+  label:hover span:after {
+    width: 10px;
+    transition: width 150ms ease 100ms;
+  }
+  
+  input[type='checkbox'] {
+    display: none;
+  }
+  input[type='checkbox']:checked + label span {
+    background-color: #2ecc71;
+    transform: scale(1.25);
+  }
+  input[type='checkbox']:checked + label span:after {
+    width: 10px;
+    background: white;
+    transition: width 150ms ease 100ms;
+  }
+  input[type='checkbox']:checked + label span:before {
+    width: 5px;
+    background: white;
+    transition: width 150ms ease 100ms;
+  }
+  input[type='checkbox']:checked + label:hover span {
+    background-color: #2ecc71;
+    transform: scale(1.25);
+  }
+  input[type='checkbox']:checked + label:hover span:after {
+    width: 10px;
+    background: white;
+    transition: width 150ms ease 100ms;
+  }
+  input[type='checkbox']:checked + label:hover span:before {
+    width: 5px;
+    background: white;
+    transition: width 150ms ease 100ms;
+  }
+
+th{
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+td{
+    padding:7px 100px;
+}
+
+table{
+    z-index: 10;
+    position: relative;
+    user-select: auto;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+
+input[type=checkbox]{
+    border:solid 1px #f44242;
+}
+
+
+/* TASK ADD */
 
 .dashboard__taskadd {
     justify-content: space-between;
@@ -169,13 +301,21 @@ body {
     height: 70%;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0px 0px 51px 0px rgba(88, 88, 88, 0.327);
-    z-index: 20;
+    box-shadow: 0px 0px 51px 0px rgba(0, 0, 0, 0.452);
+    z-index: 200;
     min-width: 800px;
     padding: 20px;
-    animation: taskadd 1s;
+    animation: taskadd .2s;
 }
 
+.exp .checkbox {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+  }
+  
 .dashboard__taskadd footer {
     display: flex;
     align-items: center;
@@ -206,7 +346,7 @@ body {
 
 .taskadd__back:hover {
     background-color: white;
-    box-shadow: 0px 0px 51px 0px rgba(88, 88, 88, 0.327);
+    box-shadow: 0px 0px 51px 0px rgba(0, 0, 0, 0.452);
 }
 
 .dashboard__taskadd svg {
@@ -221,7 +361,7 @@ body {
     justify-content: center;
     height: 40px;
     color: #f44242;
-    box-shadow: 0px 0px 51px 0px rgba(88, 88, 88, 0.327);
+    box-shadow: 0px 0px 51px 0px rgba(54, 54, 54, 0.479);
     background-color: white;
     font-weight: 800;
     text-transform: uppercase;

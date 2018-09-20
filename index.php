@@ -57,8 +57,11 @@
         <input id="password__box" type="password" autocomplete="off" name="password">
         <br/>
         <input type="submit" class="button" name="submit" value="submit" />
+        <footer style="top:60px; display:flex;flex-direction:column;justify-content:center;align-items:center;">
+			<p style="color:#f44242; font-size:14px;"><?php echo $error?></p>
+			<p style="color:#a7adb1">Doesn't have an account?<a class="footer__a" style="font-weight:700;color:#f44242; text-decoration:none;" href="php files/register.php"> Sign Up</a></p>
+		</footer>
     </form>
-    <?php echo $error?>
 </div>
 <script src="js files/scripts.js"></script>
 </body>

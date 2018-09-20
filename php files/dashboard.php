@@ -1,5 +1,16 @@
 <?php
-   include('session.php');
+    include('session.php');
+    include('config.php');
+
+    $date = date('d-m-Y');
+    echo $date;
+
+    $xxxx = "SELECT Task,Task_date FROM `{$user_check}`";
+    $result = mysqli_query($conn, $xxxx);
+
+    $name = $user_check;
+
+    mysqli_close($conn);
 ?>
 <html>
 <head>
@@ -13,7 +24,7 @@
     </div>   
     <div class="context" hidden>
         <div class="context_item"> 
-            <div class="inner_item">
+            <div class="inner_item" id="newTask">
             Create new task
             </div> 
         </div>
@@ -29,7 +40,7 @@
         </div>
         <div class="context_hr"></div>
         <div class="context_item"> 
-            <div class="inner_item last">
+            <div class="inner_item last" id="logout">
             Log Out
             </div> 
         </div>
@@ -49,7 +60,25 @@
         </svg>
         <div class="dashboard__timeline" id="dashboard__timeline">
             <div class="timeline-1">
-
+                <h1>Tasks for Today</h1>
+                <h2>TODAY</h2>
+                <?php
+                if ($result->num_rows > 0) {
+                    echo "<table><tr><th>Task Name</th><th>Date</th><th> </th></tr>";
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        $idName = $row["Task"];
+                        echo "<tr><td>".$row["Task"]."</td><td>".$row["Task_date"]."</td><td>        
+                        <input type='checkbox' id='$idName' name='$idName' value='' />
+                        <label for='$idName'>
+                          <span></span>
+                        </label></tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "0 results";
+                }
+                ?>
             </div>
             <div class="timeline-2">
 
@@ -65,11 +94,11 @@
             </div>
 
             <footer>
-                <div class="taskadd__back">
+                <div class="taskadd__back" id="taskadd__back">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="transform:rotate(180deg)" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" fill="#bdc3c7" /></svg>
                     <p>Go Back</p>
                 </div>
-                <div class="taskadd__next">
+                <div class="taskadd__next" id="taskadd__next">
                     <p>Next</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
                     

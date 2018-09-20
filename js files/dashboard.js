@@ -1,3 +1,4 @@
+// SLIDE TIMELINE
 Number.prototype.roundTo = function(nTo) {
     nTo = nTo || 10;
     return Math.round(this * (1 / nTo)) * nTo;
@@ -22,7 +23,7 @@ $(function() {
     });
 });
 
-
+// CONTEXT MENU
 
 if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
@@ -52,12 +53,53 @@ $(document).click(function() {
     };
 });
 
+$("#logout").click(function(){
+    window.location.href = "../php files/logout.php";
+
+})
+
+$("#newTask").click(function(){
+    $("#dashboard__taskadd").css("display", "flex")
+    $("#black-bg").css("display", "block")
+})
+
+//TASK ADD 
+
 $("#task-add").click(function() {
     if ($('#dashboard__taskadd').css('display') === "none") {
         $("#dashboard__taskadd").css("display", "flex")
         $("#black-bg").css("display", "block")
     } else {
         $("#dashboard__taskadd").css("display", "none")
-        $("#black-bg").css("display", "block")
+        $("#black-bg").css("display", "none")
     }
 })
+
+$("#taskadd__next").click(function(){
+
+})
+
+$("#taskadd__back").click(function(){
+    $("#dashboard__taskadd").animate({opacity: 0}, "300");
+    $("#black-bg").animate({opacity: 0}, "300");
+
+})
+
+const $inputs = document.getElementsByClassName('input');
+for (let inputIndex = $inputs.length - 1; inputIndex >= 0; inputIndex--) {
+  const $input = $inputs[inputIndex];
+  // ...
+}
+const $checkboxes = document.getElementsByClassName('input--checkbox');
+for (let checkboxIndex = $checkboxes.length - 1; checkboxIndex >= 0; checkboxIndex--) {
+  const $checkbox = $checkboxes[checkboxIndex];
+  // ...
+}
+setTimeout(() => { /* TODO: prevent this timeout */
+  const $preloadElements = document.getElementsByClassName('preload');
+  for (let preloadIndex = $preloadElements.length - 1; preloadIndex >= 0; preloadIndex--) {
+    const $preload = $preloadElements[preloadIndex];
+    $preload.classList.remove('preload');
+  }
+}, 500);
+
