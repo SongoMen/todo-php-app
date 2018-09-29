@@ -13,7 +13,7 @@
 				$error="Username already exist";
 			}
 			else{
-				$sql = "CREATE TABLE `".$username."`(Id_task INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(Id_task), Task VARCHAR(40),Task_description VARCHAR (255), Task_date VARCHAR(10));";
+				$sql = "CREATE TABLE `".$username."`(Id_task INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(Id_task), Task VARCHAR(40), Task_date VARCHAR(10), Done INT);";
                 $sql .="INSERT INTO users (username, password) VALUES ('$username', '$password')";
 
 				if (mysqli_multi_query($conn, $sql)) {
@@ -28,7 +28,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login Page</title>
+    <title>Register Page</title>
     <link rel="stylesheet" type="text/css" href="../css files/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
