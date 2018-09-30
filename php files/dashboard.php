@@ -1,11 +1,10 @@
 <?php
 include('session.php');
-include 'ChromePhp.php';
 include('config.php');
 
 $date = date('d-m-Y');
 
-$xxxx = "SELECT Task,Task_date FROM `{$user_check}`";
+$xxxx = "SELECT Task,Task_date,Done FROM `{$user_check}`";
 $result = mysqli_query($conn, $xxxx);
 
 $name = $user_check;
@@ -66,16 +65,27 @@ mysqli_close($conn);
                 <div class="timeline-1__day">
                     TODAY
                 </div>
-
-                    <div class="timeline-1__table">
+                <div class="timeline-1__table">
                     <?php
                     if ($result->num_rows > 0) {
                         echo "<table><tr><th>Task Name</th><th>Date</th><th> </th></tr>";
-                        // output data of each row
+                        $topvalue = 0;
                         while ($row = $result->fetch_assoc()) {
+                            if($idName = $row["Done"] == 01){
+                                $class = "strikeout";
+                                $input = "checked";
+                                $color = "#bdc3c7";
+                            }
+                            else{
+                                $class = "";
+                                $input = "unchecked";
+                                $color = "black";
+                            }
+                            $topvalue = $topvalue + 45;
                             $idName = $row["Task"];
-                            echo "<tr class='$idName'><td>" . $row["Task"] . "</td><td>" . $row["Task_date"] . "</td><td>        
-                            <input type='checkbox' class='table__items' id='$idName' name='$idName' value='' />
+                            echo "<span class='$idName $class' style='top: $topvalue'></span><tr style = 'color: $color;transition: all .5s' class='$idName'><td>" . $row["Task"] . "</td><td>" . $row["Task_date"] . "
+                            </td><td>        
+                            <input type='checkbox' class='table__items' id='$idName' name='$idName' $input value='' />
                             <label for='$idName'>
                             <span></span>
                             </label></tr>";
@@ -115,18 +125,53 @@ mysqli_close($conn);
         </div>
     </div>
     <script>
+        var elementsArray = [];
+
+        $(".timeline-1__table tbody").children().each(
+            function(i){
+                elementsArray.push(this.className.toLowerCase());
+            }
+        )
+        console.log(elementsArray)
         $(".table__items").click(function(event){
             var checkedValue = $('.table__items:checked').val();
             if(document.getElementById( event.target.id).checked === true){
-                $('.'+event.target.id).addClass("strikeout")
+                $('span.'+event.target.id).addClass("strikeout")
+                $('span.'+event.target.id).css({width: "600px"})
                 $('.'+event.target.id).css({color: "#bdc3c7"})
-                value=45
-                $( "<style>tr::after { top:" + 45 +" %}</style>" ).appendTo( "head" )
-                $( "<style>tr::before { top:" + 45 +"%}</style>" ).appendTo( "head" )
+                $.ajax({
+                    type:"POST",
+                    url:"send.php",
+                    data: {klucz_ajax:1, Task:event.target.id},
+                        success:function() {
+                            console.log("sent"); 
+                        },
+
+                        error: function(blad) {
+                            alert( "Wystąpił błąd");
+                            console.log(blad); 
+                        }
+                });
             }
             else{
                 $('.'+event.target.id).css({color: "black"})
-                $('.'+event.target.id).removeClass("strikeout")
+                $('span.'+event.target.id).css({width: "0"})
+                $.ajax({
+                    type:"POST",
+                    url:"send.php", 
+                    data: {klucz_ajax:0, Task:event.target.id}, 
+                        success:function() {
+                            console.log("sent"); 
+                        },
+
+                        error: function(errir) {
+                            alert( "Wystąpił błąd");
+                            console.log(error);
+                        }
+                });
+                setTimeout(() => {
+                    $('.'+event.target.id).removeClass("strikeout")
+                }, 1000);
             };
         })
     </script>
