@@ -12,6 +12,7 @@ $(function() {
 
     $("#dashboard__timeline").width(slides * slideWidth).draggable({
         axis: 'x',
+        scroll:false,
         drag: function(event, ui) {
             if (ui.position.left > min) ui.position.left = min;
             if (ui.position.left < max) ui.position.left = max;
@@ -84,24 +85,6 @@ $("#taskadd__back").click(function() {
         $("#dashboard__taskadd").css({ display: 'none' });
     }, 350)
 })
-
-const $inputs = document.getElementsByClassName('input');
-for (let inputIndex = $inputs.length - 1; inputIndex >= 0; inputIndex--) {
-    const $input = $inputs[inputIndex];
-    // ...
-}
-const $checkboxes = document.getElementsByClassName('input--checkbox');
-for (let checkboxIndex = $checkboxes.length - 1; checkboxIndex >= 0; checkboxIndex--) {
-    const $checkbox = $checkboxes[checkboxIndex];
-    // ...
-}
-setTimeout(() => { /* TODO: prevent this timeout */
-    const $preloadElements = document.getElementsByClassName('preload');
-    for (let preloadIndex = $preloadElements.length - 1; preloadIndex >= 0; preloadIndex--) {
-        const $preload = $preloadElements[preloadIndex];
-        $preload.classList.remove('preload');
-    }
-}, 500);
 
 var cleave = new Cleave('.js-date', {
     date: true,

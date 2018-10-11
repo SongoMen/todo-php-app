@@ -2,10 +2,17 @@
 include('session.php');
 include('config.php');
 
-$date = date('d-m-Y');
+$date = date('d/m/Y');
 
-$xxxx = "SELECT Task,Task_date,Done FROM `{$user_check}`";
+$xxxx = "SELECT Task,Task_date,Done FROM `{$user_check}` WHERE Task_date = '$date'";
 $result = mysqli_query($conn, $xxxx);
+
+$xxxx2 = "SELECT Task,Task_date,Done FROM `{$user_check}` WHERE Task_date < '$date'";
+$result2 = mysqli_query($conn, $xxxx2);
+
+$xxxx3 = "SELECT Task,Task_date,Done FROM `{$user_check}` WHERE Task_date > '$date'";
+$result3 = mysqli_query($conn, $xxxx3);
+
 
 $name = $user_check;
 
@@ -65,11 +72,11 @@ mysqli_close($conn);
                 <div class="timeline-1__day">
                     TODAY
                 </div>
-                <div class="timeline-1__table">
+                <div class="timeline-table">
                     <?php
                     if ($result->num_rows > 0) {
                         echo "<table><tr><th>Task Name</th><th>Date</th><th> </th></tr>";
-                        $topvalue = 0;
+                        $topvalue = 10;
                         while ($row = $result->fetch_assoc()) {
                             if($idName = $row["Done"] == 01){
                                 $class = "strikeout";
@@ -81,7 +88,7 @@ mysqli_close($conn);
                                 $input = "unchecked";
                                 $color = "black";
                             }
-                            $topvalue = $topvalue + 45;
+                            $topvalue = $topvalue + 58;
                             $idName = $row["Task"];
                             echo "<span class='$idName $class' style='top: $topvalue'></span><tr style = 'color: $color;transition: all .5s' class='$idName'><td>" . $row["Task"] . "</td><td>" . $row["Task_date"] . "
                             </td><td>        
@@ -98,12 +105,78 @@ mysqli_close($conn);
                 </div>
             </div>
             <div class="timeline-2">
-
+                <div class="timeline-2__day">
+                        BEFORE
+                </div>
+                <div class="timeline-table">
+                        <?php
+                        if ($result2->num_rows > 0) {
+                            echo "<table><tr><th>Task Name</th><th>Date</th><th> </th></tr>";
+                            $topvalue = 10;
+                            while ($row = $result2->fetch_assoc()) {
+                                if($idName = $row["Done"] == 01){
+                                    $class = "strikeout";
+                                    $input = "checked";
+                                    $color = "#bdc3c7";
+                                }
+                                else{
+                                    $class = "";
+                                    $input = "unchecked";
+                                    $color = "black";
+                                }
+                                $topvalue = $topvalue + 58;
+                                $idName = $row["Task"];
+                                echo "<span class='$idName $class' style='top: $topvalue'></span><tr style = 'color: $color;transition: all .5s' class='$idName'><td>" . $row["Task"] . "</td><td>" . $row["Task_date"] . "
+                                </td><td>        
+                                <input type='checkbox' class='table__items' id='$idName' name='$idName' $input value='' />
+                                <label for='$idName'>
+                                <span></span>
+                                </label></tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo " <div class='timeline-text'> You dont have any tasks.</div>";
+                        }
+                        ?>
+                </div>
             </div>
             <div class="timeline-3">
-
+                <div class="timeline-3__day">
+                        FUTURE
+                </div>
+                <div class="timeline-table">
+                        <?php
+                        if ($result3->num_rows > 0) {
+                            echo "<table><tr><th>Task Name</th><th>Date</th><th> </th></tr>";
+                            $topvalue = 10;
+                            while ($row = $result3->fetch_assoc()) {
+                                if($idName = $row["Done"] == 01){
+                                    $class = "strikeout";
+                                    $input = "checked";
+                                    $color = "#bdc3c7";
+                                }
+                                else{
+                                    $class = "";
+                                    $input = "unchecked";
+                                    $color = "black";
+                                }
+                                $topvalue = $topvalue + 58;
+                                $idName = $row["Task"];
+                                echo "<span class='$idName $class' style='top: $topvalue'></span><tr style = 'color: $color;transition: all .5s' class='$idName'><td>" . $row["Task"] . "</td><td>" . $row["Task_date"] . "
+                                </td><td>        
+                                <input type='checkbox' class='table__items' id='$idName' name='$idName' $input value='' />
+                                <label for='$idName'>
+                                <span></span>
+                                </label></tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo " <div class='timeline-text'> You dont have any tasks for today</div>";
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
-        </div>
         <h1 class="dashboard__welcome">Welcome <p><?php echo $user_check; ?></p> </h1>
         <div class="dashboard__taskadd" id="dashboard__taskadd" hidden>
             <form method="POST">
@@ -126,18 +199,11 @@ mysqli_close($conn);
     </div>
     <script>
         var elementsArray = [];
-
-        $(".timeline-1__table tbody").children().each(
-            function(i){
-                elementsArray.push(this.className.toLowerCase());
-            }
-        )
-        console.log(elementsArray)
         $(".table__items").click(function(event){
             var checkedValue = $('.table__items:checked').val();
             if(document.getElementById( event.target.id).checked === true){
                 $('span.'+event.target.id).addClass("strikeout")
-                $('span.'+event.target.id).css({width: "600px"})
+                $('span.'+event.target.id).css({width: "550px"})
                 $('.'+event.target.id).css({color: "#bdc3c7"})
                 $.ajax({
                     type:"POST",
