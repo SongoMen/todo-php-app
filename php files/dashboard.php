@@ -30,6 +30,7 @@ mysqli_close($conn);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="../js files/jquery.visible.js"></script>
 </head>
 <body>
     <div id = "black-bg" class="black-bg" hidden>
@@ -78,6 +79,7 @@ mysqli_close($conn);
             <div style="display:flex;align-items:center;justify-content:center;">
                 <div class="column__box"> TO DO</div>
             </div>
+            <div class="tasks">
             <div class="addTask"></div>
             <?php
                 if ($result->num_rows > 0) {
@@ -93,7 +95,8 @@ mysqli_close($conn);
                             $color = "white";
                         }
                         $idName = $row["Task"];
-                        echo "<div style = 'color: $color;transition: all .5s' class='todo__elem $idName'><div style='display:flex; width:100%; align-items:center; justify-content: space-between;'>" . $row["Task"] . "
+                        echo "<div style = 'color: $color;transition: all .5s' class='todo__elem $idName'><div style='display:flex; width:100%; align-items:center; justify-content: 
+                        space-between;'>" . $row["Task"] . "
                         <input type='checkbox' class='table__items' id='$idName' name='$idName' $input value='' />
                         <label style='padding:10px;' for='$idName'>
                         <span ></span>
@@ -103,11 +106,13 @@ mysqli_close($conn);
                     echo " <div class='column-text'> You're all caught up.</div>";
                 }
             ?>
+            </div>
         </div>
         <div class="dashboard__done">
             <div class="column__box">
                 <div> DONE</div>
             </div>
+            <div class="tasks2">
             <?php
                 if ($result2->num_rows > 0) {
                     while ($row = $result2->fetch_assoc()) {
@@ -131,7 +136,7 @@ mysqli_close($conn);
                 } else {
                     echo " <div class='column-text2'> You didn't do any tasks.</div>";
                 }
-            ?>
+            ?></div>
         </div>
         <svg id="task-add" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 96 120" enable-background="new 0 0 96 96" xml:space="preserve"><path d="M79.122,13.679H16.878c-3.3,0-5.985,2.685-5.985,5.986v56.67c0,3.3,2.685,5.985,5.985,5.985h62.244  c3.3,0,5.985-2.685,5.985-5.985v-56.67C85.107,16.365,82.423,13.679,79.122,13.679z M60.048,49.445H49.445v10.603h-2.891V49.445  H35.952v-2.891h10.603V35.952h2.891v10.602h10.603V49.445z"/></svg>
     </div>

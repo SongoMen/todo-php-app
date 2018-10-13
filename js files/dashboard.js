@@ -1,4 +1,5 @@
 var add = 0;
+
 // CONTEXT MENU
 
 /*if (document.addEventListener) {
@@ -38,9 +39,16 @@ $("#button-logout").click(function() {
 })
 
 $("#newTask").click(function() {
-    $("#dashboard__taskadd").css("display", "flex")
-    $("#dashboard__taskadd").css("opacity", "1")
-    $("#black-bg").css("display", "block")
+    if(add === 0){
+        noti = $(".column-text").remove();
+        add = 1
+        $( ".addTask" ).append( "<div class='dashboard__addTask'><input type='text' class='name' placeholder='Type task name here'><textarea class='description' placeholder='If you want, type description here'></textarea><div style='display:flex;justify-content:center;flex-direction:column'><div class='circle__add'><svg fill='white' xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'><path d='M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z'/></svg></div><div class='circle__remove'><svg fill = 'white' xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'/></svg></div></div></div>" );
+    }
+    else if(add ===1){
+        add = 0
+        $(".dashboard__todo").append( noti ); // later
+        $(".dashboard__addTask").remove()
+    }
 })
 */
 
@@ -52,7 +60,7 @@ $("#task-add").click(function() {
     }
     else if(add ===1){
         add = 0
-        $(".dashboard__todo").append( noti ); // later
+        $(".dashboard__todo").append( noti );
         $(".dashboard__addTask").remove()
     }
 })
@@ -112,6 +120,7 @@ $(".table__items").click(function(event){
                 data:{Task:nam,Description:desc,Done:0},
                     success:function(){
                         console.log("XD")
+                        window.location.reload()
                     },
                     error:function(error){
                         console.log(error)
@@ -121,3 +130,11 @@ $(".table__items").click(function(event){
         
     
     })
+
+    //add scroll
+    if($('.tasks').visible( false, true) == false){
+        $(".tasks").css({'overflow-y':'scroll', 'height': '100%' })
+    }
+    if($('.tasks2').visible( false, true) == false){
+        $(".tasks2").css({'overflow-y':'scroll', 'height': '100%' })
+    }
