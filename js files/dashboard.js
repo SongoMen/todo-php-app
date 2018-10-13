@@ -1,32 +1,7 @@
-// SLIDE TIMELINE
-Number.prototype.roundTo = function(nTo) {
-    nTo = nTo || 10;
-    return Math.round(this * (1 / nTo)) * nTo;
-}
-
-$(function() {
-    var slides = $('#dashboard__timeline').children().length;
-    var slideWidth = 800;
-    var min = 0;
-    var max = -((slides - 1) * slideWidth);
-
-    $("#dashboard__timeline").width(slides * slideWidth).draggable({
-        axis: 'x',
-        scroll:false,
-        drag: function(event, ui) {
-            if (ui.position.left > min) ui.position.left = min;
-            if (ui.position.left < max) ui.position.left = max;
-        },
-        stop: function(event, ui) {
-            $(this).animate({ 'left': (ui.position.left).roundTo(slideWidth) })
-        },
-        cursor: 'pointer'
-    });
-});
-
+add = 0;
 // CONTEXT MENU
 
-if (document.addEventListener) {
+/*if (document.addEventListener) {
     document.addEventListener('contextmenu', function(e) {
         $(".context")
             .show()
@@ -67,15 +42,15 @@ $("#newTask").click(function() {
     $("#dashboard__taskadd").css("opacity", "1")
     $("#black-bg").css("display", "block")
 })
-
+*/
 //TASK ADD 
 
 $("#task-add").click(function() {
-
-    $("#dashboard__taskadd").css("display", "flex")
-    $("#dashboard__taskadd").css("opacity", "1")
-    $("#black-bg").css("display", "block")
-
+    if(add === 0){
+        add = 1
+        $(".column-text").remove()
+        $( ".dashboard__todo" ).append( "<div class='dashboard__addTask'><input type='text' class='name' placeholder='Type task name here'><textarea class='description' placeholder='If you want, type description here'></textarea><div style='display:flex;justify-content:center;flex-direction:column'><svg class='dashboard__remove'><circle cx='30' cy='30' r='30'/></svg><svg class='dashboard__add'><circle cx='30' cy='30' r='30'/></svg></div></div>" );
+    }
 })
 
 $("#taskadd__back").click(function() {
@@ -84,9 +59,4 @@ $("#taskadd__back").click(function() {
         $("#black-bg").css({ display: 'none' });
         $("#dashboard__taskadd").css({ display: 'none' });
     }, 350)
-})
-
-var cleave = new Cleave('.js-date', {
-    date: true,
-    datePattern: ['d', 'm', 'Y']
 })

@@ -3,6 +3,16 @@
    session_start(); 
    $error ="";
 
+   $query1 = "if not exists (select * from sysobjects where name='cars' and xtype='U')
+   CREATE table users
+   (
+       Id_user int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id_user), 
+       username varchar (50), 
+       password varchar (50)
+    )";
+
+    $table = mysqli_query($conn, $query1);
+
     if(isset($_POST['submit'])){
         $username=$_POST['username'];
         $password=$_POST['password'];
@@ -18,25 +28,12 @@
         if($count == 1){
             $_SESSION['login_user'] = $username;
             header("location: ../php files/dashboard.php");
+            exit();
         }
         else {
             $error = "Your Login Name or Password is invalid";
          }
     }
-
-    /*if(isset($_POST['submit'])){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-            $sql = "INSERT INTO users (username, password)
-        VALUES ('$username', '$password')";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-    mysqli_close($conn);
-    }*/
 ?>
 <html>
 <head>
