@@ -32,16 +32,6 @@ svg {
     cursor: pointer;
 }
 
-.black-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #141414;
-    opacity: 0.8;
-    z-index: 155;
-    animation: taskadd .5s;
-}
-
 .context {
     font-size: 13px;
     position: absolute;
@@ -205,7 +195,6 @@ li svg{
     font-weight: 600;
     letter-spacing: 1px;
 }
-
 .todo__elem{
     display: flex;
     border-radius: 5px;
@@ -397,12 +386,42 @@ td:last-child {
 
 .dashboard__addTask{
     height: 20vh;
+    margin: 40px -10px;
 }
 
 .dashboard__addTask, .name, .description{
-    animation:taskadd 1s;
+    animation:taskadd .3s;
 }
 
+.circle__remove:hover, .circle__add:hover {
+    cursor: pointer;
+}
+
+.circle__add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width:70px;
+    background-color:#f44242;
+    border-radius: 50px;
+    box-shadow: 0px 0px 21px 0px #f44242;
+    margin-top:-35px;
+    margin-left:80%;
+}
+
+.circle__remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width:50px;
+    background-color:#191f24;
+    border-radius: 50px;
+    box-shadow: 0px 0px 21px 0px #191f24;
+    margin-top:-60px;
+    margin-left:60%;
+}
 .name{
     border:0;
     width:100%;
@@ -416,11 +435,12 @@ td:last-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: 1px solid #f44242;
-    animation:taskadd 1s;
+    animation:taskadd .3s;
     
 }
 
 .description{
+    cursor: pointer;
     border:0;
     width:100%;
     background-color:#fcfcfc;
@@ -433,7 +453,7 @@ td:last-child {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     height: 15vh;
-    animation:taskadd2 1s;
+    animation:taskadd2 .3s;
 }
 
 ::placeholder {
@@ -449,20 +469,4 @@ input:-webkit-autofill {
 
 input:focus, textarea:focus {
     outline: 0;
-}
-
-.dashboard__add{
-    fill:#f44242;
-    width:80px;
-    height: 80px;
-    margin-top:-75px;
-    margin-left:80%;
-}
-
-.dashboard__remove{
-    width:80px;
-    height: 80px;
-    margin-left:60%;
-    margin-top:-30px;
-    fill:white;
 }

@@ -4,15 +4,11 @@ include('config.php');
 
 $date = date('d/m/Y');
 
-$xxxx = "SELECT Task,Task_date,Done FROM `{$user_check}` where Done = 0 ";
+$xxxx = "SELECT Task,Description,Done FROM `{$user_check}` where Done = 0 ";
 $result = mysqli_query($conn, $xxxx);
 
-$xxxx2 = "SELECT Task,Task_date,Done FROM `{$user_check}` WHERE Done = 1";
+$xxxx2 = "SELECT Task,Description,Done FROM `{$user_check}` WHERE Done = 1";
 $result2 = mysqli_query($conn, $xxxx2);
-
-$xxxx3 = "SELECT Task,Task_date,Done FROM `{$user_check}` WHERE Task_date > '$date'";
-$result3 = mysqli_query($conn, $xxxx3);
-
 
 $name = $user_check;
 
@@ -74,7 +70,7 @@ mysqli_close($conn);
                 </svg>Profile
             </li>
         </ul>
-        <svg id="button-logout" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><g data-name="Group"><path data-name="Path" d="M70.1,33.4l-4.2,4.2L75.3,47H28.5v6H75.3l-9.4,9.4,4.2,4.2L84.7,52.1a3,3,0,0,0,0-4.2Z"/><path data-name="Path" d="M44.2,70.4H20.5V29.6H44.2V40h6V26.6a3,3,0,0,0-3-3H17.5a3,3,0,0,0-3,3V73.4a3,3,0,0,0,3,3H47.2a3,3,0,0,0,3-3V60h-6Z"/></g></svg>
+        <a href="logout.php"><svg id="button-logout" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><g data-name="Group"><path data-name="Path" d="M70.1,33.4l-4.2,4.2L75.3,47H28.5v6H75.3l-9.4,9.4,4.2,4.2L84.7,52.1a3,3,0,0,0,0-4.2Z"/><path data-name="Path" d="M44.2,70.4H20.5V29.6H44.2V40h6V26.6a3,3,0,0,0-3-3H17.5a3,3,0,0,0-3,3V73.4a3,3,0,0,0,3,3H47.2a3,3,0,0,0,3-3V60h-6Z"/></g></svg></a>
     </div>
     <div class="dashboard" id="dashboard">
         <!--<p class="bg-name"><?php echo $user_check; ?></p>-->
@@ -82,6 +78,7 @@ mysqli_close($conn);
             <div style="display:flex;align-items:center;justify-content:center;">
                 <div class="column__box"> TO DO</div>
             </div>
+            <div class="addTask"></div>
             <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -138,50 +135,6 @@ mysqli_close($conn);
         </div>
         <svg id="task-add" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 96 120" enable-background="new 0 0 96 96" xml:space="preserve"><path d="M79.122,13.679H16.878c-3.3,0-5.985,2.685-5.985,5.986v56.67c0,3.3,2.685,5.985,5.985,5.985h62.244  c3.3,0,5.985-2.685,5.985-5.985v-56.67C85.107,16.365,82.423,13.679,79.122,13.679z M60.048,49.445H49.445v10.603h-2.891V49.445  H35.952v-2.891h10.603V35.952h2.891v10.602h10.603V49.445z"/></svg>
     </div>
-    <script>
-        var elementsArray = [];
-        $(".table__items").click(function(event){
-            var checkedValue = $('.table__items:checked').val();
-            if(document.getElementById( event.target.id).checked === true){
-                $('span.'+event.target.id).addClass("strikeout")
-                $('span.'+event.target.id).css({width: "550px"})
-                $('.'+event.target.id).css({color: "#7f8489"})
-                $.ajax({
-                    type:"POST",
-                    url:"send.php",
-                    data: {klucz_ajax:1, Task:event.target.id},
-                        success:function() {
-                            console.log("sent"); 
-                        },
-
-                        error: function(blad) {
-                            alert( "Wystąpił błąd");
-                            console.log(blad); 
-                        }
-                });
-            }
-            else{
-                $('.'+event.target.id).css({color: "white"})
-                $('span.'+event.target.id).css({width: "0"})
-                $.ajax({
-                    type:"POST",
-                    url:"send.php", 
-                    data: {klucz_ajax:0, Task:event.target.id}, 
-                        success:function() {
-                            console.log("sent"); 
-                        },
-
-                        error: function(errir) {
-                            alert( "Wystąpił błąd");
-                            console.log(error);
-                        }
-                });
-                setTimeout(() => {
-                    $('.'+event.target.id).removeClass("strikeout")
-                }, 1000);
-            };
-        })
-    </script>
     <script src="../js files/dashboard.js"></script>
 </body>
 </html>

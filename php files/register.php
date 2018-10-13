@@ -13,7 +13,7 @@
 				$error="Username already exist";
 			}
 			else{
-				$sql = "CREATE TABLE `".$username."`(Id_task INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(Id_task), Task VARCHAR(40), Task_date VARCHAR(10), Done INT);";
+				$sql = "CREATE TABLE `".$username."`(Id_task INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(Id_task), Task VARCHAR(255), Description VARCHAR(255), Done INT);";
                 $sql .="INSERT INTO users (username, password) VALUES ('$username', '$password')";
 
 				if (mysqli_multi_query($conn, $sql)) {
