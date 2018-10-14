@@ -21,7 +21,6 @@
         $result = mysqli_query($conn, $query);
 
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        $active = $row['active'];
         
         $count = mysqli_num_rows($result);
 
