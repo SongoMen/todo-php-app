@@ -36,7 +36,6 @@ mysqli_close($conn);
     <link rel="icon" href="../images/favicon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="../js files/jquery.visible.js"></script>
 </head>
 <body>
@@ -84,7 +83,7 @@ mysqli_close($conn);
         <!--<p class="bg-name"><?php echo $user_check; ?></p>-->
         <div class="dashboard__todo">
             <div style="display:flex;align-items:center;justify-content:center;">
-                <div class="column__box"> TO DO</div>
+                <div class="column__box"> TODO</div>
             </div>
             <div class="tasks">
             <div class="addTask"></div>

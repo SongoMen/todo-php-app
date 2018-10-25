@@ -18,8 +18,7 @@ body {
     }
 }
 
-
-@keyframes taskadd2{
+@keyframes taskadd2 {
     0% {
         height: 0;
     }
@@ -88,40 +87,42 @@ svg {
     min-width: 10vw;
     height: 100%;
     padding: 15px;
-    font-size: 8px;
+    font-size: 4vw;
     box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.327);
     text-transform: uppercase;
     font-weight: 400!important;
     flex-flow: column wrap;
     z-index: 65;
 }
-ul{
-    padding:0;
+
+ul {
+    padding: 0;
     list-style-type: none;
-    font-size:17px;
-    color:white;
+    font-size: 1.2vw;
+    color: white;
     text-transform: none;
     font-weight: 500;
 }
 
-li{
-    fill:white;
+li {
+    fill: white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin:20px;
+    margin: 20px;
     transition: all .5s;
 }
 
-li:hover{
-    fill:#f44242!important;
-    color:#f44242;  
+li:hover {
+    fill: #f44242!important;
+    color: #f44242;
     cursor: pointer;
 }
 
-li svg{
-    padding-top:5px;
-    padding-right:10px;
+li svg {
+    padding-top: 5px;
+    padding-right: 10px;
+    width: 2vw
 }
 
 #button-logout {
@@ -161,6 +162,7 @@ li svg{
 .dashboard {
     display: flex;
     padding: 50px 80px;
+    flex-wrap: wrap;
     width: 85vw;
     justify-content: space-between;
     user-select: none;
@@ -170,79 +172,87 @@ li svg{
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: -.5px;
-    font-size: 12px;
-    color:white;
+    font-size: 1vw;
+    color: white;
 }
 
 .bar__welcome p {
     color: #f44242;
     font-weight: 800;
-    font-size: 25px;
+    font-size: 2vw;
     margin: 0;
 }
 
 
 /* DASHBOARD TODO */
 
-.tasks, .tasks2{
+.tasks,
+.tasks2 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width:80%;
+    width: 80%;
+    font-size: 1.2vw;
 }
 
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px;
+    /* remove scrollbar space */
+    background: transparent;
+    /* optional: just make scrollbar invisible */
 }
 
-.dashboard__todo, .dashboard__done{
+.dashboard__todo,
+.dashboard__done {
     display: flex;
+    margin: 10px;
     align-items: center;
     position: relative;
-    width:40%;
+    width: 40%;
     flex-direction: column;
-    color:white;
+    color: white;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
 }
-.todo__elem{
+
+.todo__elem {
     display: flex;
     border-radius: 5px;
     align-items: center;
-    width:80%;
+    width: 80%;
     min-height: 80px;
     padding: 0px 10px;
-    margin:10px;
-    background-color:#2a2f35;
+    margin: 10px;
+    background-color: #2a2f35;
     box-shadow: 0px 0px 21px 0px #0808083f;
 }
 
-.column__box{
-    padding: 15px 40px; 
-    height:auto;
-    background-color:#0e1216;
-    color:#858585;
+.column__box {
+    padding: 15px 40px;
+    height: auto;
+    background-color: #0e1216;
+    color: #858585;
 }
 
-.column-text, .column-text2{
+.column-text,
+.column-text2 {
     transition: all .5s;
-    color:#858585;
+    color: #858585;
     text-transform: none;
-    margin-top:30%;
-    background-color:#0e1216;
-    padding:20px;
+    margin-top: 30%;
+    background-color: #0e1216;
+    padding: 20px;
 }
 
- label {
+label {
     display: inline-block;
     color: #fff;
     cursor: pointer;
     position: relative;
 }
 
- label span {
+label span {
     display: inline-block;
     position: relative;
     background-color: transparent;
@@ -256,7 +266,7 @@ li svg{
     transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
 }
 
- label span:before {
+label span:before {
     content: '';
     width: 0px;
     height: 2px;
@@ -270,7 +280,7 @@ li svg{
     transform-origin: 0% 0%;
 }
 
- label span:after {
+label span:after {
     content: '';
     width: 0;
     height: 2px;
@@ -284,50 +294,51 @@ li svg{
     transform-origin: 0% 0%;
 }
 
- label:hover span:before {
+label:hover span:before {
     width: 5px;
     transition: width 100ms ease;
 }
- label:hover span:after {
+
+label:hover span:after {
     width: 10px;
     transition: width 150ms ease 100ms;
 }
 
- input[type='checkbox'] {
+input[type='checkbox'] {
     display: none;
 }
 
- input[type='checkbox']:checked+label span {
+input[type='checkbox']:checked+label span {
     background-color: #f44242;
     transform: scale(1.25);
     box-shadow: 0px 0px 21px 0px #f44242;
 }
 
- input[type='checkbox']:checked+label span:after {
+input[type='checkbox']:checked+label span:after {
     width: 10px;
     background: white;
     transition: width 150ms ease 100ms;
 }
 
- input[type='checkbox']:checked+label span:before {
+input[type='checkbox']:checked+label span:before {
     width: 5px;
     background: white;
     transition: width 150ms ease 100ms;
 }
 
- input[type='checkbox']:checked+label:hover span {
+input[type='checkbox']:checked+label:hover span {
     background-color: #f44242;
     transform: scale(1.25);
     box-shadow: 0px 0px 21px 0px #f44242;
 }
 
- input[type='checkbox']:checked+label:hover span:after {
+input[type='checkbox']:checked+label:hover span:after {
     width: 10px;
     background: white;
     transition: width 150ms ease 100ms;
 }
 
- input[type='checkbox']:checked+label:hover span:before {
+input[type='checkbox']:checked+label:hover span:before {
     width: 5px;
     background: white;
     transition: width 150ms ease 100ms;
@@ -357,92 +368,146 @@ li svg{
     background: transparent;
     transition: 0;
 }
+
+
 /* TASK ADD */
 
-.dashboard__addTask{
-    height: 20vh;
+.dashboard__addTask {
+    height: 15vh;
     margin: 40px -10px;
-    transition:all .5s;
+    transition: all .5s;
 }
 
-.dashboard__addTask, .name, .description{
-    animation:taskadd .3s;
+.dashboard__addTask,
+.name,
+.description {
+    animation: taskadd .3s;
 }
 
-.circle__remove:hover, .circle__add:hover {
+.circle__remove:hover,
+.circle__add:hover {
     cursor: pointer;
 }
 
-.circle__add{
+.circle__add {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 70px;
-    width:70px;
-    background-color:#f44242;
+    width: 70px;
+    background-color: #f44242;
     border-radius: 50px;
     box-shadow: 0px 0px 21px 0px #f44242;
-    margin-top:-35px;
-    margin-left:80%;
+    margin-top: -35px;
+    margin-left: 80%;
 }
 
-.circle__remove{
+.circle__remove {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50px;
-    width:50px;
-    background-color:#191f24;
+    width: 50px;
+    background-color: #191f24;
     border-radius: 50px;
     box-shadow: 0px 0px 21px 0px #191f24;
-    margin-top:-60px;
-    margin-left:60%;
+    margin-top: -60px;
+    margin-left: 60%;
 }
-.name{
-    border:0;
-    width:100%;
-    background-color:#fcfcfc;
-    padding:10px;
-    font-family:Montserrat;
+
+.name {
+    border: 0;
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 10px;
+    font-family: Montserrat;
     text-transform: uppercase;
-    font-weight:800;
+    font-weight: 800;
     height: 5vh;
-    font-size:18px;
+    font-size: 18px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: 1px solid #f44242;
-    animation:taskadd .3s;
-    
+    animation: taskadd .3s;
 }
 
-.description{
+.description {
     cursor: pointer;
-    border:0;
-    width:100%;
-    background-color:#fcfcfc;
-    padding:10px;
-    font-family:Montserrat;
-    color:#858585;
-    font-weight:600;
-    font-size:15px;
+    border: 0;
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 10px;
+    font-family: Montserrat;
+    color: #858585;
+    font-weight: 600;
+    font-size: 15px;
     resize: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    height: 15vh;
-    animation:taskadd2 .3s;
+    height: 10vh;
+    animation: taskadd2 .3s;
 }
 
 ::placeholder {
     color: #bdc3c7;
-    text-transform:none;
-    font-weight:400;
+    text-transform: none;
+    font-weight: 400;
 }
-
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: 0;
+}
+
+
+/*---------------------------------------------------------------
+                          MEDIA QUARIES
+-----------------------------------------------------------------*/
+
+@media screen and (max-width: 600px) {
+    ul {
+        font-size: 3vw
+    }
+    .left-bar {
+        min-width: 20vw
+    }
+    ul svg {
+        width: 5vw
+    }
+    .bar__welcome {
+        font-size: 3vw;
+    }
+    .bar__welcome p {
+        font-size: 4vw;
+    }
+    .column__box {
+        padding: 5px 20px;
+        font-size: 3vw;
+    }
+    .column-text,
+    .column-text2 {
+        font-size: 3vw;
+    }
+    .todo__elem {
+        min-height: 3%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    label span {
+        width: 15px;
+        height: 15px;
+    }
+    label span:after {
+        left: 5px;
+        top: 11.5px;
+    }
+    label span:before {
+        left: 4px;
+        top: 7.5px;
+    }
 }
