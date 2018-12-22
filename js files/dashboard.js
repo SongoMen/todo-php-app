@@ -114,7 +114,6 @@ $(".addTask").on('click', '.circle__add', function() {
             url: "addTask.php",
             data: { Task: nam, Description: desc, Done: 0 },
             success: function() {
-                console.log("XD")
                 window.location.reload()
             },
             error: function(error) {

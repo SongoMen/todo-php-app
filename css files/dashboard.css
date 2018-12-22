@@ -379,8 +379,7 @@ input[type='checkbox']:checked+label:hover span:before {
 }
 
 .dashboard__addTask,
-.name,
-.description {
+.name {
     animation: taskadd .3s;
 }
 
@@ -445,7 +444,6 @@ input[type='checkbox']:checked+label:hover span:before {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     height: 10vh;
-    animation: taskadd2 .3s;
 }
 
 ::placeholder {
