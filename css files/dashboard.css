@@ -84,7 +84,7 @@ svg {
     justify-content: space-between;
     align-items: center;
     background-color: #191f24;
-    min-width: 10vw;
+    width: 6vw;
     height: 100%;
     padding: 15px;
     font-size: 4vw;
@@ -98,7 +98,7 @@ svg {
 ul {
     padding: 0;
     list-style-type: none;
-    font-size: 1.2vw;
+    font-size: .7vw;
     color: white;
     text-transform: none;
     font-weight: 500;
@@ -179,7 +179,7 @@ li svg {
 .bar__welcome p {
     color: #f44242;
     font-weight: 800;
-    font-size: 2vw;
+    font-size: 1vw;
     margin: 0;
 }
 
@@ -191,7 +191,7 @@ li svg {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     font-size: 1.2vw;
 }
 
@@ -372,6 +372,14 @@ input[type='checkbox']:checked+label:hover span:before {
 
 /* TASK ADD */
 
+.task__line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-40px;
+    margin-left:20vw;
+}
+
 .dashboard__addTask {
     height: 15vh;
     margin: 40px -10px;
@@ -388,6 +396,10 @@ input[type='checkbox']:checked+label:hover span:before {
     cursor: pointer;
 }
 
+.circle__add,.circle__remove{
+    margin:10px;
+}
+
 .circle__add {
     display: flex;
     align-items: center;
@@ -397,8 +409,7 @@ input[type='checkbox']:checked+label:hover span:before {
     background-color: #f44242;
     border-radius: 50px;
     box-shadow: 0px 0px 21px 0px #f44242;
-    margin-top: -35px;
-    margin-left: 80%;
+    order:1;
 }
 
 .circle__remove {
@@ -410,8 +421,6 @@ input[type='checkbox']:checked+label:hover span:before {
     background-color: #191f24;
     border-radius: 50px;
     box-shadow: 0px 0px 21px 0px #191f24;
-    margin-top: -60px;
-    margin-left: 60%;
 }
 
 .name {
@@ -493,19 +502,91 @@ textarea:focus {
     .todo__elem {
         min-height: 3%;
     }
+    #task-add{
+        flex:1 0 50%;
+    }
+    .addtask{
+        margin-top:20px;
+    }
+    .dashboard__addTask{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .name{
+        height: 2vh;
+        font-size:5px;
+        width:80%;
+    }
+    .description{
+        height: 3vh;
+        font-size:5px;
+        width:80%;
+    }
+    .circle__add{
+        width:20px;
+        height: 20px;
+    }
+    .circle__add svg{
+        width:10px;
+        height: 10px;
+    }
+    .circle__remove{
+        width:10px;
+        height: 10px;
+        top:50px;
+    }
+    .circle__remove svg{
+        width:5px;
+        height: 5px;
+        left:1px;
+    }
+    label span {
+        width: 10px;
+        height: 10px;
+    }
+    label span:after {
+        left: 3px;
+        top: 9px;
+        width:8px!important;
+    }
+    label span:before {
+        left:2px;
+        top: 4.5px;
+        width:4px!important;
+    }
 }
 
 @media screen and (max-width: 900px) {
-    label span {
-        width: 15px;
+    .dashboard{
+        padding:20px 30px;
+    }
+    .tasks,.tasks2{
+        width:auto;
+    }
+    .task__line{
+        margin-top:-20px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .circle__add{
+        width:60px;
+        height: 60px;
+    }
+    .circle__add svg{
+        width:30px;
+        height: 30px;
+    }
+    .circle__remove{
+        width:40px;
+        height: 40px;
+    }
+    .circle__remove svg{
+        width:15px;
         height: 15px;
+        left:1px;
     }
-    label span:after {
-        left: 5px;
-        top: 11.5px;
-    }
-    label span:before {
-        left: 4px;
-        top: 7.5px;
+    .task__line{
+        margin-top:-30px;
     }
 }

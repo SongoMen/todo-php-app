@@ -29,6 +29,7 @@ $(document).click(function() {
     };
 });
 
+
 $("#logout").click(function() {
     window.location.href = "../php files/logout.php";
 })
@@ -53,7 +54,7 @@ $("#task-add").click(function() {
     if (add === 0) {
         noti = $(".column-text").remove();
         add = 1
-        $(".addTask").append("<div class='dashboard__addTask'><input type='text' class='name' placeholder='Type task name here'><textarea class='description' placeholder='If you want, type description here'></textarea><div style='display:flex;justify-content:center;flex-direction:column'><div class='circle__add'><svg fill='white' xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'><path d='M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z'/></svg></div><div class='circle__remove'><svg fill = 'white' xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'/></svg></div></div></div>");
+        $(".addTask").append("<div class='dashboard__addTask'><input type='text' class='name' placeholder='Type task name here'><textarea class='description' placeholder='If you want, type description here'></textarea><div class='task__line'><div class='circle__add'><svg fill='white' xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'><path d='M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z'/></svg></div><div class='circle__remove'><svg fill = 'white' xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'/></svg></div></div></div>");
     } else if (add === 1) {
         add = 0
         $(".dashboard__todo").append(noti);
